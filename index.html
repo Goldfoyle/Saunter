@@ -6,7 +6,7 @@
   <meta name="description" content="Saunter is a members-only community throwing warehouse parties in Auckland." />
   <link rel="canonical" href="https://saunter.pages.dev/" />
 
-  <!-- Fonts -->
+  <!-- Fonts (clean, Pals-ish) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -15,15 +15,17 @@
 
   <style>
     :root{
-      --accent:#ef6b5a;
-      --bg:#0b0b0c;
-      --panel:rgba(255,255,255,.06);
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.62);
-      --line:rgba(255,255,255,.12);
-      --shadow:0 30px 80px rgba(0,0,0,.45);
-      --radius:18px;
-      --max:980px;
+      /* KEEP YOUR CURRENT RULES COLOUR HERE */
+      --accent: #ef6b5a; /* <- change to your current rules colour */
+      --bg: #0b0b0c;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.62);
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 30px 80px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 980px;
     }
 
     *{box-sizing:border-box}
@@ -35,137 +37,238 @@
         radial-gradient(900px 700px at 20% -10%, rgba(239,107,90,.14), transparent 55%),
         radial-gradient(900px 700px at 90% 10%, rgba(255,255,255,.07), transparent 55%),
         var(--bg);
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      letter-spacing: .1px;
     }
 
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:var(--max);margin:0 auto;padding:28px 18px 64px}
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.9}
 
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 64px}
+
+    /* Top nav */
     .nav{
-      position:sticky;top:0;z-index:10;
-      backdrop-filter:blur(10px);
-      background:linear-gradient(to bottom, rgba(11,11,12,.88), rgba(11,11,12,.55));
-      border-bottom:1px solid rgba(255,255,255,.06);
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,11,12,.88), rgba(11,11,12,.55));
+      border-bottom: 1px solid rgba(255,255,255,.06);
     }
     .navinner{
       max-width:var(--max);
       margin:0 auto;
       padding:14px 18px;
-      display:flex;justify-content:space-between;align-items:center;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
     }
+    .navlinks{display:flex; gap:10px; align-items:center}
     .pill{
-      display:inline-flex;gap:8px;align-items:center;
+      display:inline-flex; align-items:center; gap:8px;
       padding:9px 12px;
       border:1px solid var(--line);
       border-radius:999px;
-      background:rgba(255,255,255,.04);
-      font:600 12px/1 "Space Grotesk",Inter;
-      letter-spacing:.08em;text-transform:uppercase;
+      background: rgba(255,255,255,.04);
+      font: 600 12px/1 "Space Grotesk", Inter, system-ui;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
-    .dot{
-      width:7px;height:7px;border-radius:50%;
-      background:var(--accent);
-      box-shadow:0 0 0 4px rgba(239,107,90,.18);
+    .pill .dot{
+      width:7px; height:7px; border-radius:99px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(239,107,90,.18);
     }
 
+    /* Hero */
     .hero{
       padding:34px 0 8px;
       display:grid;
-      grid-template-columns:1.1fr .9fr;
+      grid-template-columns: 1.1fr .9fr;
       gap:22px;
+      align-items:start;
     }
-    @media(max-width:860px){.hero{grid-template-columns:1fr}}
-
-    h1{
-      margin:0 0 10px;
-      font-family:"Space Grotesk",Inter;
-      font-size:42px;line-height:1.05;
+    @media (max-width: 860px){
+      .hero{grid-template-columns:1fr; padding-top:22px}
     }
-    .lede{color:var(--muted);font-size:16px;line-height:1.55}
 
     .logoCard{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius:calc(var(--radius) + 6px);
-      box-shadow:var(--shadow);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
       overflow:hidden;
-      min-height:280px;
+      min-height: 280px;
     }
-    .logoCard img{width:100%;display:block}
+    .logoCard img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
 
+    h1{
+      margin:0 0 10px;
+      font-family:"Space Grotesk", Inter, system-ui;
+      font-size: 42px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .lede{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .callouts{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin:14px 0 0;
+    }
+    .tag{
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+      font: 600 12px/1 "Space Grotesk", Inter, system-ui;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.78);
+    }
+    .tag strong{color:var(--text); font-weight:700}
+    .tag.accent{border-color: rgba(239,107,90,.35)}
+    .tag.accent strong{color: var(--accent)}
+
+    /* Sections */
     .section{margin-top:26px}
-    .sectionTitle{display:flex;justify-content:space-between;align-items:center}
+    .sectionTitle{
+      display:flex; align-items:center; justify-content:space-between;
+      margin:0 0 10px;
+    }
+    h2{
+      margin:0;
+      font-family:"Space Grotesk", Inter, system-ui;
+      font-size: 18px;
+      letter-spacing: -.01em;
+    }
+    .sub{color:var(--muted); font-size: 13px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    @media (max-width: 860px){
+      .grid{grid-template-columns:1fr}
+    }
 
     .card{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius:var(--radius);
-      box-shadow:0 20px 60px rgba(0,0,0,.28);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: 0 20px 60px rgba(0,0,0,.28);
       padding:16px;
     }
 
-    .rules{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+    /* Rules list */
+    .rules{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:10px}
     .rule{
-      display:flex;gap:12px;
-      padding:12px;
+      display:flex; gap:12px; align-items:flex-start;
+      padding:12px 12px;
       border:1px solid rgba(255,255,255,.10);
-      border-radius:14px;
-      background:rgba(0,0,0,.18);
+      border-radius: 14px;
+      background: rgba(0,0,0,.18);
     }
     .num{
-      width:28px;height:28px;
-      border-radius:50%;
-      display:grid;place-items:center;
-      font:700 12px "Space Grotesk";
-      background:var(--accent);
-      color:#0b0b0c;
-      box-shadow:0 0 0 4px rgba(239,107,90,.18);
+      min-width: 28px; height: 28px;
+      border-radius: 999px;
+      display:grid; place-items:center;
+      font: 700 12px/1 "Space Grotesk", Inter, system-ui;
+      color: #0b0b0c;
+      background: var(--accent); /* rules colour */
+      box-shadow: 0 0 0 4px rgba(239,107,90,.18);
     }
+    .rule b{
+      font-family:"Space Grotesk", Inter, system-ui;
+      font-weight:700;
+    }
+    .rule p{margin:2px 0 0; color:var(--muted); line-height:1.45}
 
-    form{display:flex;flex-direction:column;gap:10px}
+    /* Form */
+    form{display:flex; flex-direction:column; gap:10px}
     label{
-      font:600 12px "Space Grotesk";
-      text-transform:uppercase;
+      font: 600 12px/1 "Space Grotesk", Inter, system-ui;
       letter-spacing:.06em;
-      color:rgba(255,255,255,.78);
+      text-transform:uppercase;
+      color: rgba(255,255,255,.78);
+      margin: 6px 0 2px;
     }
-    input,textarea,select{
+    input, textarea, select{
       width:100%;
-      padding:12px;
-      border-radius:14px;
+      padding:12px 12px;
+      border-radius: 14px;
       border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      color:var(--text);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      outline:none;
+      font: 500 14px/1.2 Inter, system-ui;
     }
+    input:focus, textarea:focus, select:focus{
+      border-color: rgba(239,107,90,.5);
+      box-shadow: 0 0 0 4px rgba(239,107,90,.14);
+    }
+    textarea{min-height: 96px; resize: vertical}
 
-    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    @media(max-width:560px){.row{grid-template-columns:1fr}}
+    .row{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    @media (max-width: 560px){ .row{grid-template-columns:1fr} }
 
     .check{
-      display:flex;gap:10px;
-      padding:10px;
+      display:flex; gap:10px; align-items:flex-start;
+      padding:10px 10px;
       border:1px solid rgba(255,255,255,.10);
-      border-radius:14px;
-      background:rgba(0,0,0,.14);
+      border-radius: 14px;
+      background: rgba(0,0,0,.14);
     }
+    .check input{width:18px; height:18px; margin-top:2px}
+    .check span{color:var(--muted); font-size: 13px; line-height: 1.35}
 
     .btn{
       margin-top:6px;
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
       padding:12px 14px;
-      border-radius:999px;
+      border-radius: 999px;
       border:1px solid rgba(239,107,90,.45);
-      background:linear-gradient(180deg, rgba(239,107,90,.95), rgba(239,107,90,.72));
-      font:800 12px "Space Grotesk";
-      letter-spacing:.1em;
+      background: linear-gradient(180deg, rgba(239,107,90,.95), rgba(239,107,90,.72));
+      color:#0b0b0c;
+      font: 800 12px/1 "Space Grotesk", Inter, system-ui;
+      letter-spacing:.10em;
       text-transform:uppercase;
       cursor:pointer;
+      box-shadow: 0 18px 50px rgba(239,107,90,.16);
     }
+    .btn:disabled{opacity:.6; cursor:not-allowed}
+
+    .status{
+      display:none;
+      margin-top:8px;
+      padding:12px 12px;
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .status.ok{border-color: rgba(80, 220, 160, .35)}
+    .status.err{border-color: rgba(255, 120, 120, .35)}
 
     footer{
       margin-top:30px;
-      font-size:12px;
-      color:rgba(255,255,255,.42);
-      display:flex;justify-content:space-between;
+      color: rgba(255,255,255,.42);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
     }
   </style>
 </head>
@@ -174,83 +277,257 @@
   <div class="nav">
     <div class="navinner">
       <div class="pill"><span class="dot"></span> Saunter</div>
-      <div class="pill">Join</div>
+      <div class="navlinks">
+        <a class="pill" href="https://www.instagram.com/saunter_akl/" target="_blank" rel="noopener">@saunter_akl</a>
+        <a class="pill" href="#rules">Rules</a>
+        <a class="pill" href="#join">Join</a>
+      </div>
     </div>
   </div>
 
   <main class="wrap">
-    <!-- HERO -->
     <section class="hero">
       <div>
         <h1>Members-only warehouse parties in Auckland.</h1>
-        <p class="lede">Signup to join Saunter — a private community for house and techno warehouse parties.</p>
-        <p class="lede">Member cards from <b>Feb 2026</b>.</p>
+        <p class="lede">
+          Signup to join Saunter — a private community to throw warehouse parties. No tickets, no bar — just a space to dance and feel free.
+        </p>
+        <p class="lede">
+          We’ll start sending out member cards in <b>Feb 2026</b>. Invite your friends.
+        </p>
+
+        <div class="callouts">
+          <div class="tag accent"><strong>R18</strong> only</div>
+          <div class="tag"><strong>No phones</strong> (stickered)</div>
+          <div class="tag"><strong>Queer-first</strong> space</div>
+          <div class="tag"><strong>Consent</strong> always</div>
+        </div>
       </div>
-      <div class="logoCard">
-        <img src="/Untitled-4.PNG" alt="Saunter logo">
+
+      <div class="logoCard" aria-label="Saunter logo">
+        <!-- keep your current logo asset -->
+        <img src="/Untitled-4.PNG" alt="Saunter logo" />
       </div>
     </section>
 
-    <!-- RULES -->
     <section id="rules" class="section">
       <div class="sectionTitle">
-        <h2>Rules</h2><span class="lede">This is the whole point.</span>
+        <h2>Rules</h2>
+        <div class="sub">This is the whole point.</div>
       </div>
+
       <div class="card">
         <ol class="rules">
-          <li class="rule"><div class="num">1</div><div><b>R18</b><p>Only 18+. We will ask for IDs.</p></div></li>
-          <li class="rule"><div class="num">2</div><div><b>Confidentiality</b><p>What happens here stays here. Phones will be stickered.</p></div></li>
-          <li class="rule"><div class="num">3</div><div><b>Don’t be a dick</b><p>No racism, ableism, sexism, homophobia or transphobia.</p></div></li>
-          <li class="rule"><div class="num">4</div><div><b>Values</b><p>Saunter is a queer-first space. Anyone is welcome; we celebrate queerness and diversity.</p></div></li>
-          <li class="rule"><div class="num">5</div><div><b>Safe space for femmes</b><p>Leeriness, creepiness or misogyny isn’t accepted. Not into toxic dudes or bros.Leave your dogs at home.</p></div></li>
-          <li class="rule"><div class="num">6</div><div><b>Consent</b><p>Consent is key for anything at our events. Sex & nudity positive. (Not a sex party.)</p></div></li>
-          <li class="rule"><div class="num">7</div><div><b>Respect</b><p>This is a private community space. Respect the space and the neighbours.</p></div></li>
-          <li class="rule"><div class="num">8</div><div><b>Alcohol sucks</b><p>Be responsible if you drink. Intoxication is grounds for removal.</p></div></li>
-          <li class="rule"><div class="num">9</div><div><b>Community</b><p>We don’t make money from these events. Help clean up, don’t linger outside, don’t pee outside.</p></div></li>
-          <li class="rule"><div class="num">10</div><div><b>Membership</b><p>Member card required for entry. Members can bring non-members. Membership can be revoked at any time for rule breaking.</p></div></li>
+          <li class="rule">
+            <div class="num">1</div>
+            <div><b>R18</b><p>Only 18+. We will ask for IDs.</p></div>
+          </li>
+          <li class="rule">
+            <div class="num">2</div>
+            <div><b>Confidentiality</b><p>What happens here stays here. Phones will be stickered.</p></div>
+          </li>
+          <li class="rule">
+            <div class="num">3</div>
+            <div><b>Don’t be a dick</b><p>No racism, ableism, sexism, homophobia or transphobia.</p></div>
+          </li>
+          <li class="rule">
+            <div class="num">4</div>
+            <div><b>Values</b><p>Saunter is a queer-first space. Anyone is welcome; we celebrate queerness and diversity.</p></div>
+          </li>
+          <li class="rule">
+            <div class="num">5</div>
+            <div><b>Safe space for femmes</b><p>Leeriness, creepiness or misogyny isn’t accepted. Not into toxic dudes or bros.</p></div>
+          </li>
+          <li class="rule">
+            <div class="num">6</div>
+            <div><b>Consent</b><p>Consent is key for anything at our events. Sex & nudity positive. (Not a sex party.)</p></div>
+          </li>
+          <li class="rule">
+            <div class="num">7</div>
+            <div><b>Respect</b><p>This is a private community space. Respect the space and the neighbours.</p></div>
+          </li>
+          <li class="rule">
+            <div class="num">8</div>
+            <div><b>Alcohol sucks</b><p>Be responsible if you drink. Intoxication is grounds for removal.</p></div>
+          </li>
+          <li class="rule">
+            <div class="num">9</div>
+            <div><b>Community</b><p>We don’t make money from these events. Help clean up, don’t linger outside, don’t pee outside.</p></div>
+          </li>
+          <li class="rule">
+            <div class="num">10</div>
+            <div><b>Membership</b><p>Member card required for entry. Members can bring non-members. Membership can be revoked at any time.</p></div>
+          </li>
         </ol>
       </div>
     </section>
 
-    <!-- JOIN FORM -->
     <section id="join" class="section">
-      <div class="card">
-        <form action="https://api.web3forms.com/submit" method="POST">
-          <input type="hidden" name="access_key" value="63b37d8a-a6e2-4222-97ce-b1f26c42f04c">
+      <div class="sectionTitle">
+        <h2>Join</h2>
+        <div class="sub">No spam. Just updates + member card details.</div>
+      </div>
 
-          <label>What's your name?</label>
-          <input name="name" required>
+      <div class="grid">
+        <div class="card">
+          <form id="joinForm" action="https://api.web3forms.com/submit" method="POST">
+            <!-- Web3Forms required hidden key -->
+            <input type="hidden" name="access_key" value="63b37d8a-a6e2-4222-97ce-b1f26c42f04c" />
+            <input type="hidden" name="subject" value="Saunter — New Member Signup" />
+            <input type="hidden" name="from_name" value="Saunter Signup" />
 
-          <label>Email *</label>
-          <input type="email" name="email" required>
+            <!-- Honeypot -->
+            <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
-          <label>Whatsapp</label>
-          <input name="whatsapp">
+            <div class="row">
+              <div>
+                <label for="name">What's your name?</label>
+                <input id="name" name="name" type="text" required placeholder="Your name" />
+              </div>
+              <div>
+                <label for="question_type">Question Type</label>
+                <select id="question_type" name="question_type" required>
+                  <option value="" selected disabled>Select…</option>
+                  <option>Membership request</option>
+                  <option>General</option>
+                  <option>DJ / music</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
 
-          <label>Why do you want to be a member? *</label>
-          <textarea name="why_member" required></textarea>
+            <div class="row">
+              <div>
+                <label for="email">Email Address <span aria-hidden="true">*</span></label>
+                <input id="email" name="email" type="email" required placeholder="you@email.com" />
+              </div>
+              <div>
+                <label for="whatsapp">Whatsapp (to join the community)</label>
+                <input id="whatsapp" name="whatsapp" type="tel" placeholder="+64…" />
+              </div>
+            </div>
 
-          <label>How old are you? *</label>
-          <input type="number" min="18" name="age" required>
+            <label class="check">
+              <input type="checkbox" name="read_rules" required />
+              <span>Have you read our rules?</span>
+            </label>
 
-          <label>What does consent mean for you? *</label>
-          <textarea name="consent_meaning" required></textarea>
+            <div>
+              <label for="why_member">Why do you want to be a member? <span aria-hidden="true">*</span></label>
+              <textarea id="why_member" name="why_member" required placeholder="Tell us why you want in."></textarea>
+            </div>
 
-          <label>Favourite mix / DJ / song</label>
-          <input name="fave_music">
+            <div class="row">
+              <div>
+                <label for="age">How old are you? <span aria-hidden="true">*</span></label>
+                <input id="age" name="age" type="number" required min="18" inputmode="numeric" placeholder="18+" />
+              </div>
+              <div>
+                <label for="instagram">Instagram</label>
+                <input id="instagram" name="instagram" type="text" placeholder="@handle (optional)" />
+              </div>
+            </div>
 
-          <label>Square photo for member card (link) *</label>
-          <input type="url" name="photo_url" required>
+            <div>
+              <label for="consent_meaning">What does consent mean for you? <span aria-hidden="true">*</span></label>
+              <textarea id="consent_meaning" name="consent_meaning" required placeholder="Short answer is fine."></textarea>
+            </div>
 
-          <button class="btn">Request membership</button>
-        </form>
+            <div>
+              <label for="fave_music">What's a favourite mix/dj/song of yours?</label>
+              <input id="fave_music" name="fave_music" type="text" placeholder="Link or name (optional)" />
+            </div>
+
+            <div>
+              <label for="photo_url">Square photo for member card (link) <span style="opacity:.6">(optional)</span></label>
+              <input id="photo_url" name="photo_url" type="url" placeholder="Paste a share link (Google Drive / Dropbox / iCloud / Imgur etc.)" />
+              <div class="sub" style="margin-top:6px">
+                Upload your photo somewhere, set it to “Anyone with the link can view”, then paste the link here.
+                (Square-ish headshot works best.)
+              </div>
+            </div>
+
+            <div>
+              <label for="photo_note">If you can’t share a link</label>
+              <textarea id="photo_note" name="photo_note" placeholder="Tell us where to find it (e.g. IG profile), or say you’ll send it later."></textarea>
+
+            <div>
+              <label for="message">Anything we should know?</label>
+              <textarea id="message" name="message" placeholder="e.g. bringing friends, accessibility needs, etc."></textarea>
+            </div>
+
+            <label class="check">
+              <input type="checkbox" name="agree_rules" required />
+              <span>I agree to the rules and understand membership can be revoked for breaking them.</span>
+            </label>
+
+            <label class="check">
+              <input type="checkbox" name="age_confirm" required />
+              <span>I confirm I am 18+ (R18) and can show ID at the door.</span>
+            </label>
+
+            <button class="btn" type="submit" id="submitBtn">Request membership</button>
+
+            <div class="status ok" id="okStatus">Submitted. If you used a real email, you’re in the list. 🖤</div>
+            <div class="status err" id="errStatus">Something broke. Try again in a minute.</div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2 style="margin:0 0 8px">What happens next?</h2>
+          <p class="lede" style="margin:0 0 10px">
+            You’ll get occasional updates about upcoming nights, and member card logistics.
+          </p>
+          <p class="lede" style="margin:0">
+            We’re small on purpose. If you’re a respectful human, you’ll fit right in.
+          </p>
+        </div>
       </div>
     </section>
 
     <footer>
       <div>© Saunter — Members</div>
-      <div>Auckland</div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <span style="color:rgba(255,255,255,.35)">Auckland</span>
+        <span style="width:4px;height:4px;border-radius:99px;background:rgba(255,255,255,.25)"></span>
+        <a href="#join" style="opacity:.9">Join</a>
+      </div>
     </footer>
   </main>
+
+  <script>
+    const form = document.getElementById("joinForm");
+    const btn = document.getElementById("submitBtn");
+    const ok = document.getElementById("okStatus");
+    const err = document.getElementById("errStatus");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      ok.style.display = "none";
+      err.style.display = "none";
+
+      btn.disabled = true;
+      const oldText = btn.textContent;
+      btn.textContent = "Sending…";
+
+      try {
+        const fd = new FormData(form);
+        const res = await fetch(form.action, { method: "POST", body: fd });
+        const data = await res.json().catch(() => ({}));
+
+        if (res.ok && (data.success === true || data.message)) {
+          ok.style.display = "block";
+          form.reset();
+        } else {
+          err.style.display = "block";
+        }
+      } catch (e2) {
+        err.style.display = "block";
+      } finally {
+        btn.disabled = false;
+        btn.textContent = oldText;
+      }
+    });
+  </script>
 </body>
 </html>
