@@ -278,7 +278,6 @@
     <div class="navinner">
       <div class="pill"><span class="dot"></span> Saunter</div>
       <div class="navlinks">
-        <a class="pill" href="https://www.instagram.com/saunter_akl/" target="_blank" rel="noopener">@saunter_akl</a>
         <a class="pill" href="#rules">Rules</a>
         <a class="pill" href="#join">Join</a>
       </div>
@@ -379,32 +378,19 @@
             <!-- Honeypot -->
             <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
 
-            <div class="row">
-              <div>
-                <label for="name">What's your name?</label>
-                <input id="name" name="name" type="text" required placeholder="Your name" />
-              </div>
-              <div>
-                <label for="question_type">Question Type</label>
-                <select id="question_type" name="question_type" required>
-                  <option value="" selected disabled>Select…</option>
-                  <option>Membership request</option>
-                  <option>General</option>
-                  <option>DJ / music</option>
-                  <option>Other</option>
-                </select>
-              </div>
+            <div>
+              <label for="name">What's your name?</label>
+              <input id="name" name="name" type="text" required placeholder="Your name" />
             </div>
 
-            <div class="row">
-              <div>
-                <label for="email">Email Address <span aria-hidden="true">*</span></label>
-                <input id="email" name="email" type="email" required placeholder="you@email.com" />
-              </div>
-              <div>
-                <label for="whatsapp">Whatsapp (to join the community)</label>
-                <input id="whatsapp" name="whatsapp" type="tel" placeholder="+64…" />
-              </div>
+            <div>
+              <label for="email">Email Address <span aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" required placeholder="you@email.com" />
+            </div>
+
+            <div>
+              <label for="whatsapp">Whatsapp (to join the community)</label>
+              <input id="whatsapp" name="whatsapp" type="tel" placeholder="+64…" />
             </div>
 
             <label class="check">
@@ -417,15 +403,9 @@
               <textarea id="why_member" name="why_member" required placeholder="Tell us why you want in."></textarea>
             </div>
 
-            <div class="row">
-              <div>
-                <label for="age">How old are you? <span aria-hidden="true">*</span></label>
-                <input id="age" name="age" type="number" required min="18" inputmode="numeric" placeholder="18+" />
-              </div>
-              <div>
-                <label for="instagram">Instagram</label>
-                <input id="instagram" name="instagram" type="text" placeholder="@handle (optional)" />
-              </div>
+            <div>
+              <label for="age">How old are you? <span aria-hidden="true">*</span></label>
+              <input id="age" name="age" type="number" required min="18" inputmode="numeric" placeholder="18+" />
             </div>
 
             <div>
@@ -441,19 +421,7 @@
             <div>
               <label for="photo_url">Square photo for member card (link) <span style="opacity:.6">(optional)</span></label>
               <input id="photo_url" name="photo_url" type="url" placeholder="Paste a share link (Google Drive / Dropbox / iCloud / Imgur etc.)" />
-              <div class="sub" style="margin-top:6px">
-                Upload your photo somewhere, set it to “Anyone with the link can view”, then paste the link here.
-                (Square-ish headshot works best.)
-              </div>
-            </div>
-
-            <div>
-              <label for="photo_note">If you can’t share a link</label>
-              <textarea id="photo_note" name="photo_note" placeholder="Tell us where to find it (e.g. IG profile), or say you’ll send it later."></textarea>
-
-            <div>
-              <label for="message">Anything we should know?</label>
-              <textarea id="message" name="message" placeholder="e.g. bringing friends, accessibility needs, etc."></textarea>
+              <div class="sub" style="margin-top:6px">If you don’t have a link yet, leave this blank — we’ll follow up.</div>
             </div>
 
             <label class="check">
