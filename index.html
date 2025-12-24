@@ -1,104 +1,256 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content=" Saunter — A private community membership party in Auckland." />
+  <meta name="description" content="Saunter is a members-only community throwing warehouse parties in Auckland." />
+  <link rel="canonical" href="https://saunter.pages.dev/" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <title>Saunter</title>
+
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #ff6350; /* logo coral */
-      color: #0a0a0a;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-      text-align: center;
+    :root{
+      --accent:#ef6b5a;
+      --bg:#0b0b0c;
+      --panel:rgba(255,255,255,.06);
+      --text:rgba(255,255,255,.92);
+      --muted:rgba(255,255,255,.62);
+      --line:rgba(255,255,255,.12);
+      --shadow:0 30px 80px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:980px;
     }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 20px;
-      border-bottom: 1px solid #0002;
-      font-weight: bold;
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(900px 700px at 20% -10%, rgba(239,107,90,.14), transparent 55%),
+        radial-gradient(900px 700px at 90% 10%, rgba(255,255,255,.07), transparent 55%),
+        var(--bg);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
     }
-    nav .links a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #0a0a0a;
+
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:28px 18px 64px}
+
+    .nav{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:blur(10px);
+      background:linear-gradient(to bottom, rgba(11,11,12,.88), rgba(11,11,12,.55));
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
-    header {
-      padding: 40px 20px;
+    .navinner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex;justify-content:space-between;align-items:center;
     }
-    header img {
-      max-width: 300px;
-      height: auto;
-      filter: drop-shadow(0 6px 12px rgba(0,0,0,.3));
+    .pill{
+      display:inline-flex;gap:8px;align-items:center;
+      padding:9px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background:rgba(255,255,255,.04);
+      font:600 12px/1 "Space Grotesk",Inter;
+      letter-spacing:.08em;text-transform:uppercase;
     }
-    h1 {
-      margin: 20px 0 10px;
+    .dot{
+      width:7px;height:7px;border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 4px rgba(239,107,90,.18);
     }
-    .rules {
-      max-width: 600px;
-      margin: 40px auto;
-      text-align: left;
-      background: #fff;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.2);
+
+    .hero{
+      padding:34px 0 8px;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:22px;
     }
-    .rule {
-      margin: 12px 0;
+    @media(max-width:860px){.hero{grid-template-columns:1fr}}
+
+    h1{
+      margin:0 0 10px;
+      font-family:"Space Grotesk",Inter;
+      font-size:42px;line-height:1.05;
     }
-    footer {
-      margin: 40px 0 20px;
-      font-size: 0.9rem;
-      color: #111;
+    .lede{color:var(--muted);font-size:16px;line-height:1.55}
+
+    .logoCard{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius:calc(var(--radius) + 6px);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      min-height:280px;
+    }
+    .logoCard img{width:100%;display:block}
+
+    .section{margin-top:26px}
+    .sectionTitle{display:flex;justify-content:space-between;align-items:center}
+
+    .card{
+      border:1px solid var(--line);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius:var(--radius);
+      box-shadow:0 20px 60px rgba(0,0,0,.28);
+      padding:16px;
+    }
+
+    .rules{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+    .rule{
+      display:flex;gap:12px;
+      padding:12px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      background:rgba(0,0,0,.18);
+    }
+    .num{
+      width:28px;height:28px;
+      border-radius:50%;
+      display:grid;place-items:center;
+      font:700 12px "Space Grotesk";
+      background:var(--accent);
+      color:#0b0b0c;
+      box-shadow:0 0 0 4px rgba(239,107,90,.18);
+    }
+
+    form{display:flex;flex-direction:column;gap:10px}
+    label{
+      font:600 12px "Space Grotesk";
+      text-transform:uppercase;
+      letter-spacing:.06em;
+      color:rgba(255,255,255,.78);
+    }
+    input,textarea,select{
+      width:100%;
+      padding:12px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.04);
+      color:var(--text);
+    }
+
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media(max-width:560px){.row{grid-template-columns:1fr}}
+
+    .check{
+      display:flex;gap:10px;
+      padding:10px;
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:14px;
+      background:rgba(0,0,0,.14);
+    }
+
+    .btn{
+      margin-top:6px;
+      padding:12px 14px;
+      border-radius:999px;
+      border:1px solid rgba(239,107,90,.45);
+      background:linear-gradient(180deg, rgba(239,107,90,.95), rgba(239,107,90,.72));
+      font:800 12px "Space Grotesk";
+      letter-spacing:.1em;
+      text-transform:uppercase;
+      cursor:pointer;
+    }
+
+    footer{
+      margin-top:30px;
+      font-size:12px;
+      color:rgba(255,255,255,.42);
+      display:flex;justify-content:space-between;
     }
   </style>
 </head>
+
 <body>
-  <nav>
-    <div>Saunter</div>
-    <div class="links">
-      <a href="#rules">Rules</a>
-      <a href="#join">Join</a>
+  <div class="nav">
+    <div class="navinner">
+      <div class="pill"><span class="dot"></span> Saunter</div>
+      <div class="pill">Join</div>
     </div>
-  </nav>
+  </div>
 
-  <header>
-    <img src="Untitled-4.PNG" alt=" Saunter Logo" />
-    <p>Signup to join Saunter, we're building a members only community to throw warehouses parties in Auckland.</p>
-  <p>We wanna do things a bit different, no tickets, no bar, just a space to dance and feel free.</p>
-  <p>We will start sending out member cards in Feb 2026. Invite your friends.</p>
-  </header>
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Members-only warehouse parties in Auckland.</h1>
+        <p class="lede">Signup to join Saunter — a private community to throw warehouse parties.</p>
+        <p class="lede">Member cards from <b>Feb 2026</b>.</p>
+      </div>
+      <div class="logoCard">
+        <img src="/Untitled-4.PNG" alt="Saunter logo">
+      </div>
+    </section>
 
-  <section id="rules" class="rules">
-    <h2>Rules</h2>
-    <div class="rule"><strong>1. R18</strong> — Only 18+ we will ask for IDs.</div>
-    <div class="rule"><strong>2. Confidentiality</strong> — What happens here stays here, phones will be stickered.</div>
-    <div class="rule"><strong>3. Don't be a Dick</strong> — No racism, ableism, sexism, homophobia or transphobia.</div>
-    <div class="rule"><strong>4. Values</strong> — Saunter is a Queer first space, anyone is welcome but we celebrate queerness and diversity.</div>
-    <div class="rule"><strong>5. Safe Space for Femmes</strong> — Leeriness , creepiness or misogyny is never accepted. We're not into toxic dudes or bros, leave your dogs at home.</div>
-    <div class="rule"><strong>6. Consent</strong> — Consent is key for anything at our events. We're sex and nudity positive at our events.(We're not a sex party but if you wanna get freaky you're welcome to.)</div>
-    <div class="rule"><strong>7. Respect</strong> — The space is a private community space. Please be respectful of this space and the neighbours.</div>
-    <div class="rule"><strong>8. Alcohol Sucks</strong> — Be responsible if you decide to drink, we’re not here for boozing and intoxication is grounds for removal.</div>
-    <div class="rule"><strong>9. Community</strong> — We don't make money from these events, so help us please throw away trash, don't linger outside, don't pee outside.</div>
-    <div class="rule"><strong>10. Membership</strong> — Members will be issued member cards, which are required for entry, each member can bring non members. Membership is free, and most events will be free. Membership can be revoked at any time for any reason. We reserve the right to ban anyone who breaks our rules.</div>
+    <!-- RULES -->
+    <section id="rules" class="section">
+      <div class="sectionTitle">
+        <h2>Rules</h2><span class="lede">This is the whole point.</span>
+      </div>
+      <div class="card">
+        <ol class="rules">
+          <li class="rule"><div class="num">1</div><div><b>R18</b><p>Only 18+. We will ask for IDs.</p></div></li>
+          <li class="rule"><div class="num">2</div><div><b>Confidentiality</b><p>What happens here stays here. Phones will be stickered.</p></div></li>
+          <li class="rule"><div class="num">3</div><div><b>Don’t be a dick</b><p>No racism, ableism, sexism, homophobia or transphobia.</p></div></li>
+          <li class="rule"><div class="num">4</div><div><b>Values</b><p>Saunter is a queer-first space. Anyone is welcome; we celebrate queerness and diversity.</p></div></li>
+          <li class="rule"><div class="num">5</div><div><b>Safe space for femmes</b><p>Leeriness, creepiness or misogyny isn’t accepted. Not into toxic dudes or bros.</p></div></li>
+          <li class="rule"><div class="num">6</div><div><b>Consent</b><p>Consent is key for anything at our events. Sex & nudity positive. (Not a sex party.)</p></div></li>
+          <li class="rule"><div class="num">7</div><div><b>Respect</b><p>This is a private community space. Respect the space and the neighbours.</p></div></li>
+          <li class="rule"><div class="num">8</div><div><b>Alcohol sucks</b><p>Be responsible if you drink. Intoxication is grounds for removal.</p></div></li>
+          <li class="rule"><div class="num">9</div><div><b>Community</b><p>We don’t make money from these events. Help clean up, don’t linger outside, don’t pee outside.</p></div></li>
+          <li class="rule"><div class="num">10</div><div><b>Membership</b><p>Member card required for entry. Members can bring non-members. Membership can be revoked at any time.</p></div></li>
+        </ol>
+      </div>
+    </section>
 
+    <!-- JOIN FORM -->
+    <section id="join" class="section">
+      <div class="card">
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="63b37d8a-a6e2-4222-97ce-b1f26c42f04c">
 
-  </section>
+          <label>What's your name?</label>
+          <input name="name" required>
 
-  <section id="join" class="rules">
-    <h2>Join</h2>
-    <iframe src="https://docs.google.com/forms/d/1EQffUtKJMkvcqvORQhPkxOqFkukcgPjRCZaMtbB-394/viewform?embedded=true" width="100%" height="500" style="border:0;" title="Join Form"></iframe>
-  </section>
+          <label>Email *</label>
+          <input type="email" name="email" required>
 
-  <footer>
-    © <span id="y"></span> Saunter — Members
-  </footer>
+          <label>Whatsapp</label>
+          <input name="whatsapp">
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+          <label>Why do you want to be a member? *</label>
+          <textarea name="why_member" required></textarea>
+
+          <label>How old are you? *</label>
+          <input type="number" min="18" name="age" required>
+
+          <label>What does consent mean for you? *</label>
+          <textarea name="consent_meaning" required></textarea>
+
+          <label>Favourite mix / DJ / song</label>
+          <input name="fave_music">
+
+          <label>Square photo for member card (link) *</label>
+          <input type="url" name="photo_url" required>
+
+          <button class="btn">Request membership</button>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <div>© Saunter — Members</div>
+      <div>Auckland</div>
+    </footer>
+  </main>
 </body>
 </html>
