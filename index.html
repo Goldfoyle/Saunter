@@ -335,7 +335,7 @@
           </li>
           <li class="rule">
             <div class="num">5</div>
-            <div><b>Safe space for femmes</b><p>Leeriness, creepiness or misogyny isn’t accepted. Not into toxic dudes or bros.</p></div>
+            <div><b>Safe space for femmes</b><p>Leeriness, creepiness or misogyny isn’t accepted. Not into toxic dudes or bros.Leave your dogs at home.</p></div>
           </li>
           <li class="rule">
             <div class="num">6</div>
@@ -367,7 +367,7 @@
         <div class="sub">No spam. Just updates + member card details.</div>
       </div>
 
-      <div class="grid">
+      <div class="grid" style="grid-template-columns:1fr">
         <div class="card">
           <form id="joinForm" action="https://api.web3forms.com/submit" method="POST">
             <!-- Web3Forms required hidden key -->
@@ -393,11 +393,6 @@
               <input id="whatsapp" name="whatsapp" type="tel" placeholder="+64…" />
             </div>
 
-            <label class="check">
-              <input type="checkbox" name="read_rules" required />
-              <span>Have you read our rules?</span>
-            </label>
-
             <div>
               <label for="why_member">Why do you want to be a member? <span aria-hidden="true">*</span></label>
               <textarea id="why_member" name="why_member" required placeholder="Tell us why you want in."></textarea>
@@ -421,17 +416,11 @@
             <div>
               <label for="photo_url">Square photo for member card (link) <span style="opacity:.6">(optional)</span></label>
               <input id="photo_url" name="photo_url" type="url" placeholder="Paste a share link (Google Drive / Dropbox / iCloud / Imgur etc.)" />
-              <div class="sub" style="margin-top:6px">If you don’t have a link yet, leave this blank — we’ll follow up.</div>
             </div>
 
             <label class="check">
-              <input type="checkbox" name="agree_rules" required />
-              <span>I agree to the rules and understand membership can be revoked for breaking them.</span>
-            </label>
-
-            <label class="check">
-              <input type="checkbox" name="age_confirm" required />
-              <span>I confirm I am 18+ (R18) and can show ID at the door.</span>
+              <input type="checkbox" name="read_rules" required />
+              <span>I have read and agree to the rules.</span>
             </label>
 
             <button class="btn" type="submit" id="submitBtn">Request membership</button>
@@ -439,16 +428,6 @@
             <div class="status ok" id="okStatus">Submitted. If you used a real email, you’re in the list. 🖤</div>
             <div class="status err" id="errStatus">Something broke. Try again in a minute.</div>
           </form>
-        </div>
-
-        <div class="card">
-          <h2 style="margin:0 0 8px">What happens next?</h2>
-          <p class="lede" style="margin:0 0 10px">
-            You’ll get occasional updates about upcoming nights, and member card logistics.
-          </p>
-          <p class="lede" style="margin:0">
-            We’re small on purpose. If you’re a respectful human, you’ll fit right in.
-          </p>
         </div>
       </div>
     </section>
