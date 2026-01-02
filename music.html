@@ -80,6 +80,7 @@
       display:grid;
       grid-template-columns:1.1fr .9fr;
       gap:22px;
+      align-items:start;
     }
     @media(max-width:860px){.hero{grid-template-columns:1fr}}
 
@@ -96,15 +97,26 @@
       margin:0 0 14px;
     }
 
+    /* Updated: shrink-to-fit join box */
     .logoCard{
       border:1px solid var(--line);
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border-radius:24px;
-      padding:18px;
-      display:flex;
+      padding:14px 16px;
+      display:inline-flex;
       align-items:center;
-      min-height:180px;
+      justify-content:center;
       box-shadow:var(--shadow);
+      width:fit-content;
+      height:fit-content;
+      min-height:unset;
+      align-self:start;
+    }
+    .joinLink{
+      font: 700 12px/1 "Space Grotesk", Inter, system-ui;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color: var(--accent);
     }
 
     .callouts{display:flex;flex-wrap:wrap;gap:10px}
@@ -214,15 +226,11 @@
       <div class="tag">Tech House</div>
       <div class="tag">Techno</div>
       <div class="tag">NY House</div>
-
-
     </div>
   </div>
 
   <div class="logoCard">
-    <p class="lede">
-      These are the sounds we want to hear in the room.
-    </p>
+    <a class="joinLink" href="/#join">Join</a>
   </div>
 </section>
 
@@ -254,7 +262,7 @@
 </div>
 
 <div class="card">
-  <div class="embedHead"><span class="embedTitle">House Cut</span><span class="miniPill">YouTube</span></div>
+  <div class="embedHead"><span class="embedTitle">Mike Starr (Mudd Show)</span><span class="miniPill">YouTube</span></div>
   <div class="ratio"><iframe src="https://www.youtube.com/embed/Dd5zRgtECsA"></iframe></div>
 </div>
 
@@ -269,7 +277,7 @@
 </div>
 
 <div class="card">
-  <div class="embedHead"><span class="embedTitle">Raphael Top Secret (Bonaire)</span><span class="miniPill">SoundCloud</span></div>
+  <div class="embedHead"><span class="embedTitle">Raphaël Top Secret (Bonaire)</span><span class="miniPill">SoundCloud</span></div>
   <div class="soundcloudWrap">
     <iframe class="soundcloudFrame" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/bonaire-ba/raphael-top-secret-at-bonaire-vol-xiii-2025"></iframe>
   </div>
@@ -299,18 +307,15 @@
   <div class="ratio"><iframe src="https://www.youtube.com/embed/6-NCths4n7Q"></iframe></div>
 </div>
 
-  
 <div class="card">
   <div class="embedHead"><span class="embedTitle">Stella Zekri (Rinse FM)</span><span class="miniPill">YouTube</span></div>
   <div class="ratio"><iframe src="https://www.youtube.com/embed/7op6-1IIkps"></iframe></div>
 </div>
 
-  
 <div class="card">
   <div class="embedHead"><span class="embedTitle">Velasco Mudd Show Mudd Show)</span><span class="miniPill">YouTube</span></div>
   <div class="ratio"><iframe src="https://www.youtube.com/embed/CCymPwDEYBc"></iframe></div>
 </div>
-
 
 </div>
 </section>
