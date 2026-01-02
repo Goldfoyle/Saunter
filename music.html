@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Saunter music — mixes and sets that match the room. Four embeds to get the vibe." />
+  <link rel="canonical" href="https://saunter.pages.dev/music.html" />
+
+  <!-- Fonts (clean, Pals-ish) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <title>Music | Saunter</title>
+
+  <style>
+    :root{
+      /* KEEP YOUR CURRENT RULES COLOUR HERE */
+      --accent: #ef6b5a; /* <- change to your current rules colour */
+      --bg: #0b0b0c;
+      --panel: rgba(255,255,255,.06);
+      --panel2: rgba(255,255,255,.09);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.62);
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 30px 80px rgba(0,0,0,.45);
+      --radius: 18px;
+      --max: 980px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--text);
+      background:
+        radial-gradient(900px 700px at 20% -10%, rgba(239,107,90,.14), transparent 55%),
+        radial-gradient(900px 700px at 90% 10%, rgba(255,255,255,.07), transparent 55%),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      letter-spacing: .1px;
+    }
+
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.9}
+
+    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 64px}
+
+    /* Top nav */
+    .nav{
+      position:sticky; top:0; z-index:10;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,11,12,.88), rgba(11,11,12,.55));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .navinner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+    }
+    .navlinks{display:flex; gap:10px; align-items:center; flex-wrap:wrap}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:9px 12px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+      font: 600 12px/1 "Space Grotesk", Inter, system-ui;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .pill .dot{
+      width:7px; height:7px; border-radius:99px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(239,107,90,.18);
+    }
+
+    /* Hero */
+    .hero{
+      padding:34px 0 8px;
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:22px;
+      align-items:start;
+    }
+    @media (max-width: 860px){
+      .hero{grid-template-columns:1fr; padding-top:22px}
+    }
+
+    .logoCard{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      min-height: 240px;
+      display:grid;
+      place-items:center;
+      padding:18px;
+      position:relative;
+    }
+    .logoMark{
+      width:100%;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      background:
+        radial-gradient(700px 300px at 20% 10%, rgba(239,107,90,.18), transparent 60%),
+        radial-gradient(700px 300px at 90% 60%, rgba(255,255,255,.07), transparent 60%),
+        rgba(0,0,0,.22);
+      padding:18px;
+    }
+    .logoMark h3{
+      margin:0 0 10px;
+      font-family:"Space Grotesk", Inter, system-ui;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      font-size:12px;
+      color: rgba(255,255,255,.72);
+      display:flex; align-items:center; gap:10px;
+    }
+    .logoMark h3 .chip{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(239,107,90,.35);
+      background: rgba(239,107,90,.10);
+      color: rgba(239,107,90,.95);
+      font-weight:700;
+      letter-spacing:.08em;
+    }
+    .logoMark p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.55;
+      font-size: 14px;
+    }
+
+    h1{
+      margin:0 0 10px;
+      font-family:"Space Grotesk", Inter, system-ui;
+      font-size: 42px;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+    }
+    .lede{
+      margin:0 0 14px;
+      color:var(--muted);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .callouts{
+      display:flex; flex-wrap:wrap; gap:10px;
+      margin:14px 0 0;
+    }
+    .tag{
+      padding:8px 10px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      background: rgba(255,255,255,.04);
+      font: 600 12px/1 "Space Grotesk", Inter, system-ui;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.78);
+    }
+    .tag strong{color:var(--text); font-weight:700}
+    .tag.accent{border-color: rgba(239,107,90,.35)}
+    .tag.accent strong{color: var(--accent)}
+
+    /* Sections */
+    .section{margin-top:26px}
+    .sectionTitle{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      margin:0 0 10px;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    h2{
+      margin:0;
+      font-family:"Space Grotesk", Inter, system-ui;
+      font-size: 18px;
+      letter-spacing: -.01em;
+    }
+    .sub{color:var(--muted); font-size: 13px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    @media (max-width: 860px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    .card{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--radius);
+      box-shadow: 0 20px 60px rgba(0,0,0,.28);
+      padding:16px;
+    }
+
+    /* Embeds */
+    .embedCard{padding:0; overflow:hidden}
+    .embedHead{
+      padding:14px 16px 10px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:12px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background: rgba(0,0,0,.12);
+    }
+    .embedTitle{
+      margin:0;
+      font-family:"Space Grotesk", Inter, system-ui;
+      font-size:14px;
+      letter-spacing:.02em;
+    }
+    .embedMeta{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.4;
+    }
+    .miniPill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 10px;
+      border:1px solid rgba(239,107,90,.35);
+      border-radius:999px;
+      background: rgba(239,107,90,.10);
+      color: rgba(239,107,90,.95);
+      font: 700 11px/1 "Space Grotesk", Inter, system-ui;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+
+    .ratio{
+      position:relative;
+      width:100%;
+      padding-top:56.25%; /* 16:9 */
+      background: rgba(0,0,0,.22);
+    }
+    .ratio iframe{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
+
+    /* SoundCloud is fixed-height, not 16:9 */
+    .soundcloudWrap{
+      padding:14px 16px 16px;
+      background: rgba(0,0,0,.10);
+    }
+    .soundcloudFrame{
+      width:100%;
+      height:166px;
+      border:0;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+    }
+
+    footer{
+      margin-top:30px;
+      color: rgba(255,255,255,.42);
+      font-size: 12px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="navinner">
+      <div class="pill"><span class="dot"></span> Saunter</div>
+      <div class="navlinks">
+        <a class="pill" href="/#rules">Rules</a>
+        <a class="pill" href="/#join">Join</a>
+        <a class="pill" href="/music.html" aria-current="page">Music</a>
+        <a class="pill" href="https://www.instagram.com/saunter_akl/" target="_blank" rel="noopener" aria-label="Saunter on Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <h1>Music for the room.</h1>
+        <p class="lede">
+          These are reference sets. If you get this vibe, you’ll get Saunter.
+          If you’re applying for membership, drop your favourite mix/DJ in the form — we actually listen.
+        </p>
+        <p class="lede">
+          Four embeds: three YouTube sets, one SoundCloud mix.
+        </p>
+
+        <div class="callouts">
+          <div class="tag accent"><strong>Techno</strong> + House</div>
+          <div class="tag"><strong>Warehouse</strong> energy</div>
+          <div class="tag"><strong>Long-form</strong> sets</div>
+          <div class="tag"><strong>No phones</strong> in the room</div>
+        </div>
+      </div>
+
+      <div class="logoCard" aria-label="About the music">
+        <div class="logoMark">
+          <h3><span class="chip">Guidelines</span></h3>
+          <p>
+            We like patient builds, functional grooves, and DJs who can hold a room without screaming at it.
+            Send us your link when you apply — the music matters.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="mixesTitle">
+      <div class="sectionTitle">
+        <div>
+          <h2 id="mixesTitle">Four mixes</h2>
+          <div class="sub">These are your links — already embedded.</div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <!-- YouTube 1 -->
+        <article class="card embedCard">
+          <header class="embedHead">
+            <div>
+              <p class="embedTitle">YouTube Set 01</p>
+              <p class="embedMeta">gT0Z9Nl5Qtg</p>
+            </div>
+            <span class="miniPill">YouTube</span>
+          </header>
+          <div class="ratio">
+            <iframe
+              src="https://www.youtube.com/embed/gT0Z9Nl5Qtg"
+              title="YouTube video player"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </article>
+
+        <!-- YouTube 2 -->
+        <article class="card embedCard">
+          <header class="embedHead">
+            <div>
+              <p class="embedTitle">YouTube Set 02</p>
+              <p class="embedMeta">obxciQfi1Fo</p>
+            </div>
+            <span class="miniPill">YouTube</span>
+          </header>
+          <div class="ratio">
+            <iframe
+              src="https://www.youtube.com/embed/obxciQfi1Fo"
+              title="YouTube video player"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </article>
+
+        <!-- SoundCloud -->
+        <article class="card embedCard">
+          <header class="embedHead">
+            <div>
+              <p class="embedTitle">MOXIE — Best of 2025 (SoundCloud)</p>
+              <p class="embedMeta">SoundCloud embed</p>
+            </div>
+            <span class="miniPill">SoundCloud</span>
+          </header>
+          <div class="soundcloudWrap">
+            <iframe
+              class="soundcloudFrame"
+              loading="lazy"
+              scrolling="no"
+              allow="autoplay"
+              referrerpolicy="origin"
+              src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-202286394-991268468/moxie-best-of-2025-101225&color=%23ef6b5a&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+            </iframe>
+          </div>
+        </article>
+
+        <!-- YouTube 3 -->
+        <article class="card embedCard">
+          <header class="embedHead">
+            <div>
+              <p class="embedTitle">YouTube Set 03</p>
+              <p class="embedMeta">sTHHJvnJQDg</p>
+            </div>
+            <span class="miniPill">YouTube</span>
+          </header>
+          <div class="ratio">
+            <iframe
+              src="https://www.youtube.com/embed/sTHHJvnJQDg"
+              title="YouTube video player"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen></iframe>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div>© Saunter — Members</div>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <span style="color:rgba(255,255,255,.35)">Auckland</span>
+        <span style="width:4px;height:4px;border-radius:99px;background:rgba(255,255,255,.25)"></span>
+        <a href="/#join" style="opacity:.9">Join</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
