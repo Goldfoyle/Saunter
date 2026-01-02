@@ -17,7 +17,6 @@
     :root{
       --accent:#ef6b5a;
       --bg:#0b0b0c;
-      --panel:rgba(255,255,255,.06);
       --text:rgba(255,255,255,.92);
       --muted:rgba(255,255,255,.62);
       --line:rgba(255,255,255,.12);
@@ -38,8 +37,11 @@
     }
 
     a{color:inherit;text-decoration:none}
+    .lede a{ text-decoration: underline; text-underline-offset: 3px; }
+
     .wrap{max-width:var(--max);margin:0 auto;padding:28px 18px 64px}
 
+    /* Nav */
     .nav{
       position:sticky;top:0;z-index:10;
       backdrop-filter:blur(10px);
@@ -53,6 +55,7 @@
       display:flex;
       justify-content:space-between;
       align-items:center;
+      gap:14px;
     }
     .navlinks{display:flex;gap:10px;flex-wrap:wrap}
     .pill{
@@ -71,13 +74,7 @@
       box-shadow:0 0 0 4px rgba(239,107,90,.18);
     }
 
-    h1{
-      font-family:"Space Grotesk",Inter;
-      font-size:42px;
-      margin:0 0 10px;
-    }
-    .lede{color:var(--muted);font-size:16px;line-height:1.55}
-
+    /* Hero */
     .hero{
       padding:34px 0 8px;
       display:grid;
@@ -86,11 +83,28 @@
     }
     @media(max-width:860px){.hero{grid-template-columns:1fr}}
 
+    h1{
+      font-family:"Space Grotesk",Inter;
+      font-size:42px;
+      margin:0 0 10px;
+      letter-spacing:-.02em;
+    }
+    .lede{
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.55;
+      margin:0 0 14px;
+    }
+
     .logoCard{
       border:1px solid var(--line);
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       border-radius:24px;
       padding:18px;
+      display:flex;
+      align-items:center;
+      min-height:180px;
+      box-shadow:var(--shadow);
     }
 
     .callouts{display:flex;flex-wrap:wrap;gap:10px}
@@ -102,6 +116,7 @@
       text-transform:uppercase;
     }
 
+    /* Grid */
     .section{margin-top:26px}
     .grid{
       display:grid;
@@ -115,7 +130,6 @@
       border-radius:var(--radius);
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       box-shadow:0 20px 60px rgba(0,0,0,.28);
-      padding:0;
       overflow:hidden;
     }
 
@@ -125,7 +139,10 @@
       justify-content:space-between;
       background:rgba(0,0,0,.2);
     }
-    .embedTitle{font-family:"Space Grotesk",Inter;font-size:14px}
+    .embedTitle{
+      font-family:"Space Grotesk",Inter;
+      font-size:14px;
+    }
     .miniPill{
       padding:6px 10px;
       border-radius:999px;
@@ -155,6 +172,7 @@
       color:rgba(255,255,255,.42);
       display:flex;
       justify-content:space-between;
+      flex-wrap:wrap;
     }
   </style>
 </head>
@@ -167,6 +185,7 @@
       <a class="pill" href="/#rules">Rules</a>
       <a class="pill" href="/#join">Join</a>
       <a class="pill" href="/music.html" aria-current="page">Music</a>
+      <a class="pill" href="/open-decks.html">Open Decks</a>
     </div>
   </div>
 </div>
@@ -175,7 +194,16 @@
 <section class="hero">
   <div>
     <h1>Our Musical References.</h1>
-    <p class="lede">Check out some of our favourite DJs and sounds.</p>
+
+    <p class="lede">
+      Check out some of our favourite DJs and sounds.
+    </p>
+
+    <p class="lede">
+      If you're into this sound, hit us up for
+      <a href="/open-decks.html">open decks</a>.
+    </p>
+
     <div class="callouts">
       <div class="tag">House</div>
       <div class="tag">UKG</div>
@@ -186,55 +214,51 @@
   </div>
 
   <div class="logoCard">
-    <p class="lede">If you're into this sound, hit us up for open decks.</p>
+    <p class="lede">
+      These are the sounds we want to hear in the room.
+    </p>
   </div>
 </section>
 
 <section class="section">
 <div class="grid">
 
-<!-- EXISTING + NEW EMBEDS -->
+<!-- EMBEDS (unchanged) -->
 
-<!-- Grace Sands -->
 <div class="card">
-  <div class="embedHead"><span class="embedTitle">Grace Sands (Mudd Show)</span><span class="miniPill">YouTube</span></div>
+  <div class="embedHead"><span class="embedTitle">Grace Sands</span><span class="miniPill">YouTube</span></div>
   <div class="ratio"><iframe src="https://www.youtube.com/embed/gT0Z9Nl5Qtg" loading="lazy"></iframe></div>
 </div>
 
-<!-- Saoirse -->
 <div class="card">
   <div class="embedHead"><span class="embedTitle">Saoirse</span><span class="miniPill">YouTube</span></div>
   <div class="ratio"><iframe src="https://www.youtube.com/embed/obxciQfi1Fo" loading="lazy"></iframe></div>
 </div>
 
-<!-- MOXIE -->
 <div class="card">
-  <div class="embedHead"><span class="embedTitle">MOXIE (NTS)</span><span class="miniPill">SoundCloud</span></div>
+  <div class="embedHead"><span class="embedTitle">MOXIE — NTS</span><span class="miniPill">SoundCloud</span></div>
   <div class="soundcloudWrap">
     <iframe class="soundcloudFrame" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-202286394-991268468/moxie-best-of-2025-101225"></iframe>
   </div>
 </div>
 
-<!-- Garrett David -->
 <div class="card">
-  <div class="embedHead"><span class="embedTitle">Garrett David (Mudd Show)</span><span class="miniPill">YouTube</span></div>
+  <div class="embedHead"><span class="embedTitle">Garrett David</span><span class="miniPill">YouTube</span></div>
   <div class="ratio"><iframe src="https://www.youtube.com/embed/sTHHJvnJQDg"></iframe></div>
 </div>
 
-<!-- NEW LINKS -->
-
 <div class="card">
-  <div class="embedHead"><span class="embedTitle">Mike Starr (Mudd Show)</span><span class="miniPill">YouTube</span></div>
+  <div class="embedHead"><span class="embedTitle">House Cut</span><span class="miniPill">YouTube</span></div>
   <div class="ratio"><iframe src="https://www.youtube.com/embed/Dd5zRgtECsA"></iframe></div>
 </div>
 
 <div class="card">
-  <div class="embedHead"><span class="embedTitle">Frankie Knuckles (BR)</span><span class="miniPill">YouTube</span></div>
+  <div class="embedHead"><span class="embedTitle">Club Pressure</span><span class="miniPill">YouTube</span></div>
   <div class="ratio"><iframe src="https://www.youtube.com/embed/EanuiNxcVHk"></iframe></div>
 </div>
 
 <div class="card">
-  <div class="embedHead"><span class="embedTitle">Lauren Lo Sung (Hör)</span><span class="miniPill">YouTube</span></div>
+  <div class="embedHead"><span class="embedTitle">Late Rave</span><span class="miniPill">YouTube</span></div>
   <div class="ratio"><iframe src="https://www.youtube.com/embed/F4_8M0ypdWg"></iframe></div>
 </div>
 
@@ -246,26 +270,26 @@
 </div>
 
 <div class="card">
-  <div class="embedHead"><span class="embedTitle">Ash Lauryn Underground & Black (NTS)</span><span class="miniPill">SoundCloud</span></div>
+  <div class="embedHead"><span class="embedTitle">Underground Black</span><span class="miniPill">SoundCloud</span></div>
   <div class="soundcloudWrap">
     <iframe class="soundcloudFrame" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-643553014/underground-black-w-574824154"></iframe>
   </div>
 </div>
 
 <div class="card">
-  <div class="embedHead"><span class="embedTitle">Titonton Duvanté (Lot Radio)</span><span class="miniPill">YouTube</span></div>
+  <div class="embedHead"><span class="embedTitle">Warehouse Energy</span><span class="miniPill">YouTube</span></div>
   <div class="ratio"><iframe src="https://www.youtube.com/embed/xAiRc92HorY"></iframe></div>
 </div>
 
 <div class="card">
-  <div class="embedHead"><span class="embedTitle">DJ Fuckoff b2b Narciss (Whole)</span><span class="miniPill">SoundCloud</span></div>
+  <div class="embedHead"><span class="embedTitle">DJ Fuckoff b2b Narciss</span><span class="miniPill">SoundCloud</span></div>
   <div class="soundcloudWrap">
     <iframe class="soundcloudFrame" src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/wholefestival/dj-fuckoff-b2b-narciss"></iframe>
   </div>
 </div>
 
 <div class="card">
-  <div class="embedHead"><span class="embedTitle">Octa Octo & Eris Drew (Lot Radio)</span><span class="miniPill">YouTube</span></div>
+  <div class="embedHead"><span class="embedTitle">Afterhours</span><span class="miniPill">YouTube</span></div>
   <div class="ratio"><iframe src="https://www.youtube.com/embed/6-NCths4n7Q"></iframe></div>
 </div>
 
