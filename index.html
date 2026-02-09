@@ -29,42 +29,66 @@
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      color:var(--text);
+    /* FIX: don't lock the page height */
+    html,body{height:auto; min-height:100%}
+
+    /* FIX: put the SAME background on html to stop weird edge colour on mobile */
+    html{
       background:
         radial-gradient(900px 700px at 20% -10%, rgba(239,107,90,.14), transparent 55%),
         radial-gradient(900px 700px at 90% 10%, rgba(255,255,255,.07), transparent 55%),
         var(--bg);
+    }
+
+    body{
+      margin:0;
+      color:var(--text);
+      /* FIX: html has the background now */
+      background: transparent;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       letter-spacing: .1px;
+      overflow-x:hidden; /* prevent sideways bleed */
+      overflow-y:auto;   /* ensure scroll */
     }
 
     a{color:inherit; text-decoration:none}
     a:hover{opacity:.9}
 
-    .wrap{max-width:var(--max); margin:0 auto; padding:28px 18px 64px}
+    /* FIX: nav is fixed, so we add top padding to content */
+    .wrap{max-width:var(--max); margin:0 auto; padding:120px 18px 64px}
 
-    /* Top nav */
     /* Top nav — always visible */
-.nav{
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 1000;
-  backdrop-filter: blur(10px);
-  background: linear-gradient(to bottom, rgba(11,11,12,.88), rgba(11,11,12,.55));
-  border-bottom: 1px solid rgba(255,255,255,.06);
-}
-   .navinner{
-  max-width:var(--max);
-  margin:0 auto;
-  padding:14px 18px 10px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-    .navlinks{display:flex; gap:10px; align-items:center}
+    .nav{
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,11,12,.88), rgba(11,11,12,.55));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .navinner{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:14px 18px 10px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    /* FIX: proper 2-row nav layout (IG stays top-right) */
+    .navtop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .navbottom{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
     .pill{
       display:inline-flex; align-items:center; gap:8px;
       padding:9px 12px;
@@ -74,12 +98,15 @@
       font: 600 12px/1 "Space Grotesk", Inter, system-ui;
       letter-spacing:.08em;
       text-transform:uppercase;
+      white-space:nowrap;
     }
     .pill .dot{
       width:7px; height:7px; border-radius:99px;
       background: var(--accent);
       box-shadow: 0 0 0 4px rgba(239,107,90,.18);
     }
+    /* tighter IG icon pill */
+    .pill.ig{padding:9px 10px}
 
     /* Hero */
     .hero{
@@ -272,78 +299,54 @@
       gap:12px;
       flex-wrap:wrap;
     }
+
     @media (max-width: 560px){
       .wrap{
         padding-left: 16px;
         padding-right: 16px;
+        padding-top: 132px; /* slightly more room for 2-row fixed nav */
       }
-
       .navinner{
         padding-left: 16px;
         padding-right: 16px;
       }
+      .navbottom{
+        justify-content:flex-start;
+      }
     }
 
-   /* === MOBILE FIX (ACTUAL FINAL) === */
-
-/* Put identical background on html + body to avoid edge colour */
-html,
-body{
-  margin: 0;
-  padding: 0;
-  min-height: 100dvh;
-  background:
-    radial-gradient(900px 700px at 20% -10%, rgba(239,107,90,.14), transparent 55%),
-    radial-gradient(900px 700px at 90% 10%, rgba(255,255,255,.07), transparent 55%),
-    var(--bg);
-}
-
-/* Prevent any horizontal scroll */
-body{
-  overflow-x: hidden;
-}
-
-/* Nav was the overflow culprit — let it wrap on mobile */
-@media (max-width: 560px){
-  .navinner{
-    flex-wrap: wrap;
-  }
-  .navlinks{
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
-}
-
-/* Safety */
-img, svg{
-  max-width: 100%;
-  height: auto;
-}
-
+    /* Safety */
+    img, svg{
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 
 <body>
   <div class="nav">
     <div class="navinner">
+
       <div class="navtop">
-  <a class="pill brand" href="/"><span class="dot"></span> Saunter</a>
+        <a class="pill brand" href="/"><span class="dot"></span> Saunter</a>
 
-  <a class="pill ig" href="https://www.instagram.com/saunter_akl/" target="_blank" rel="noopener" aria-label="Instagram">
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/>
-      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
-      <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
-    </svg>
-  </a>
-</div>
+        <a class="pill ig" href="https://www.instagram.com/saunter_akl/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
 
-<div class="navbottom">
-  <a class="pill" href="#rules">Rules</a>
-  <a class="pill" href="#join">Join</a>
-  <a class="pill" href="/music.html">Music</a>
-  <a class="pill" href="/open-decks.html">Open Decks</a>
-</div>
+      <div class="navbottom">
+        <a class="pill" href="#rules">Rules</a>
+        <a class="pill" href="#join">Join</a>
+        <a class="pill" href="/music.html">Music</a>
+        <a class="pill" href="/open-decks.html">Open Decks</a>
+      </div>
+
+    </div>
   </div>
 
   <main class="wrap">
