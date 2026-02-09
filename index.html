@@ -282,24 +282,29 @@
       }
     }
 
-    /* === Mobile full-bleed fix (ADD THIS BELOW) === */
-    html, body{
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      max-width: 100%;
-      background: var(--bg);
-      overflow-x: hidden;
-    }
+    /* === Mobile full-bleed fix (FINAL, sticky-safe) === */
+html{
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+}
 
-    body{
-      min-height: 100dvh;
-    }
+body{
+  margin: 0;
+  padding: 0;
+  min-height: 100dvh;
+}
 
-    img, svg{
-      max-width: 100%;
-      height: auto;
-    }
+/* Contain horizontal bleed without breaking sticky nav */
+.wrap{
+  overflow-x: hidden;
+}
+
+/* Safety */
+img, svg{
+  max-width: 100%;
+  height: auto;
+}
 
   </style>
 </head>
