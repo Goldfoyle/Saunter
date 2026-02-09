@@ -271,16 +271,36 @@
       flex-wrap:wrap;
     }
     @media (max-width: 560px){
-  .wrap{
-    padding-left: 16px;
-    padding-right: 16px;
-  }
+      .wrap{
+        padding-left: 16px;
+        padding-right: 16px;
+      }
 
-  .navinner{
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-}
+      .navinner{
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+    }
+
+    /* === Mobile full-bleed fix (ADD THIS BELOW) === */
+    html, body{
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      max-width: 100%;
+      background: var(--bg);
+      overflow-x: hidden;
+    }
+
+    body{
+      min-height: 100dvh;
+    }
+
+    img, svg{
+      max-width: 100%;
+      height: auto;
+    }
+
   </style>
 </head>
 
