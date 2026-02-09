@@ -282,22 +282,34 @@
       }
     }
 
-    /* === Mobile full-bleed fix (FINAL, sticky-safe) === */
-html{
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-}
+   /* === MOBILE FIX (ACTUAL FINAL) === */
 
+/* Put identical background on html + body to avoid edge colour */
+html,
 body{
   margin: 0;
   padding: 0;
   min-height: 100dvh;
+  background:
+    radial-gradient(900px 700px at 20% -10%, rgba(239,107,90,.14), transparent 55%),
+    radial-gradient(900px 700px at 90% 10%, rgba(255,255,255,.07), transparent 55%),
+    var(--bg);
 }
 
-/* Contain horizontal bleed without breaking sticky nav */
-.wrap{
+/* Prevent any horizontal scroll */
+body{
   overflow-x: hidden;
+}
+
+/* Nav was the overflow culprit — let it wrap on mobile */
+@media (max-width: 560px){
+  .navinner{
+    flex-wrap: wrap;
+  }
+  .navlinks{
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
 }
 
 /* Safety */
